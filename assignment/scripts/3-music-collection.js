@@ -19,6 +19,8 @@ function addToCollection(collection, title, artist, yearPublished) {
   return album;
 };
 
+
+
 //Use and Test the `addToCollection` function:
 
 addToCollection (myCollection, 'Strange Desire', 'Bleachers', 2014);
@@ -38,13 +40,24 @@ function showCollection(collection) {
   for (let objectInfo of collection) {
     console.log(`${objectInfo.title} by ${objectInfo.artist}, published in ${objectInfo.yearPublished}`);
   }
-}
+};
 
 //Test the `showCollection` function.
 
+console.log('My Albums List:')
 showCollection(myCollection);
 
 // Add a function named `findByArtist`. 
+
+function findByArtist(collection, artist){
+  let artistMatch = [];
+  for (let objectInfo of collection) {
+    if (artist === collection.artist) {
+      artistMatch.push(artist);
+    }
+  }
+  return artistMatch;
+};
 
 function findByArtist(collection, artist) {
   artistMatch = [];
@@ -57,10 +70,28 @@ function findByArtist(collection, artist) {
   return artistMatch;
 }
 
+//Test findByArtist
 
-console.log(findByArtist(myCollection, 'Milky Chance'));
-console.log(findByArtist(myCollection, 'Justin Timerlake'));
+console.log('Matches found:', findByArtist(myCollection, 'Milky Chance'));
+console.log('Matches found:', findByArtist(myCollection, 'Justin Timerlake'));
 
+//Create search function with collection & searchCriteria parameters.
+//Create new array
+//loop through collection for artist & year match
+//return matches to array
+
+function search(collection, searchCriteria){
+  const searchMatches = [];
+
+  for (let objectInfo of collection){
+    if (searchCriteria.toLowerCase() === objectInfo.artist.toLowerCase() && searchCriteria.toLowerCase() === objectInfo.year.toLowerCase()){
+      searchMatches.push(objectInfo);
+    }
+  }
+  return searchMatches;
+};
+
+//Test search
 
 
 
